@@ -2,10 +2,12 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 // graphql query that will allow us to search for some data
+// this query does not have a name, but names for your query will come in
+// useful when we begin using variables
 const getData = graphql`
   {
     site {
-      siteMetadata {
+      info: siteMetadata {
         author
         data
         description
@@ -24,7 +26,7 @@ const Header = () => {
   // you can destructure multiple times
   const {
     site: {
-      siteMetadata: {
+      info: {
         title,
         description,
         data,
@@ -37,8 +39,8 @@ const Header = () => {
       <h2>Title: {title}</h2>
       <p>Description: {description}</p>
       <h3>Mapping through site meta data: </h3>
-      {data.map(item => (
-        <p>{item}</p>
+      {data.map((item, index) => (
+        <p key={index}>{item}</p>
       ))}
       <h3>Person: {name}</h3>
       <h3>
