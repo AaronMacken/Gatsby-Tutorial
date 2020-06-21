@@ -28,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
       // where our template file is found
       component: path.resolve(`src/templates/product-template.js`),
       // uses the slug in the template file to set up a query which finds all the data for the given product slug
-      // shows up as props.pathContext.<varName> or props.pathContext.slug
+      // shows up as props.pageContext.<varName> or props.pageContext.slug
       context: {
         slug: product.slug,
       },
